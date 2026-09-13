@@ -219,7 +219,7 @@ Route::get('/{key}.txt', function ($key) {
         return response($currentKey, 200, ['Content-Type' => 'text/plain; charset=utf-8']);
     }
     abort(404);
-})->where('key', '^[a-zA-Z0-9_\-]+$');
+})->where('key', '[a-zA-Z0-9_\-]{8,64}');
 
 // ─── 7. Admin Routes ───────────────────────────────────────────────────────────
 Route::middleware(['web', 'auth', 'admin'])->group(function () {
