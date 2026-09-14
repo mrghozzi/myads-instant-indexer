@@ -1,7 +1,7 @@
 {
     "name": "Instant Indexer",
     "slug": "myads-instant-indexer",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "MrGhozzi",
     "description": "Real-time search engine indexing for Google, Bing, Yandex, and Seznam upon publishing via Google Indexing API and IndexNow protocol.",
     "thumbnail": "thumbnail.png",

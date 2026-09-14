@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [1.0.1] - 2026-09-14
+
+### Fixed
+- **IndexNow Key Verification Route Regex Constraint:** Restricted the dynamic `/{key}.txt` verification route regex to validate keys strictly between 8 and 64 characters (`[a-zA-Z0-9_\-]{8,64}`) adhering to IndexNow protocol specifications and preventing broad URL capture collisions.
+
 ## [1.0.0] - 2026-08-19
 
 ### Added

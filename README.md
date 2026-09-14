@@ -1,6 +1,6 @@
 # ⚡ Instant Indexer for MYADS
 
-**Instant Indexer** is an automated real-time search engine push indexing plugin for the **MYADS v4.5.2** ecosystem. It connects your platform directly with major search engines—including **Google** via the **Google Indexing API** and **Microsoft Bing, Yandex, Seznam, and Naver** via the **IndexNow protocol**—to index fresh content instantly upon publication.
+**Instant Indexer** is an automated real-time search engine push indexing plugin for the **MYADS v4.5.0+** ecosystem. It connects your platform directly with major search engines—including **Google** via the **Google Indexing API** and **Microsoft Bing, Yandex, Seznam, and Naver** via the **IndexNow protocol**—to index fresh content instantly upon publication.
 
 ---
 
