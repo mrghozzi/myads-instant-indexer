@@ -1,12 +1,14 @@
 {
     "name": "Instant Indexer",
     "slug": "myads-instant-indexer",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "author": "MrGhozzi",
     "description": "Real-time search engine indexing for Google, Bing, Yandex, and Seznam upon publishing via Google Indexing API and IndexNow protocol.",
     "thumbnail": "thumbnail.png",
     "siteweb": "https://github.com/mrghozzi",
     "latest": "https://github.com/mrghozzi/myads-instant-indexer/releases/latest",
     "ADStn_url": "myads-instant-indexer",
-    "min_myads": "4.5.0"
+    "min_myads": "4.6.0",
+    "max_myads": "4.7.x",
+    "settings_url": "/admin/instant-indexer"
 }
