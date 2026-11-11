@@ -605,6 +605,12 @@
                                                 <label class="form-check-label fw-medium" for="autoPage">{{ __('instant_indexer::messages.trigger_page') }}</label>
                                             </div>
                                         </div>
+                                        <div class="col-md-4">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" name="auto_group" value="1" id="autoGroup" {{ !empty($config['auto_group']) ? 'checked' : '' }}>
+                                                <label class="form-check-label fw-medium" for="autoGroup">{{ __('instant_indexer::messages.trigger_group') }}</label>
+                                            </div>
+                                        </div>
                                         <div class="col-md-12">
                                             <hr class="my-2">
                                             <div class="form-check form-switch">

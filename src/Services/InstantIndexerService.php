@@ -328,6 +328,35 @@ class InstantIndexerService
             // Ignore
         }
 
+        // 4. Community Groups
+        if (class_exists(\App\Models\Group::class)) {
+            try {
+                $groups = \App\Models\Group::where('status', \App\Models\Group::STATUS_ACTIVE)
+                    ->where('privacy', \App\Models\Group::PRIVACY_PUBLIC)
+                    ->orderBy('id', 'desc')
+                    ->limit($limit)
+                    ->get();
+
+                foreach ($groups as $grp) {
+                    $url = route('groups.show', $grp->slug);
+                    $lastLog = IndexerLog::where('url', $url)->latest()->first();
+
+                    $items[] = [
+                        'id' => $grp->id,
+                        'title' => $grp->name,
+                        'type' => 'group',
+                        'type_label' => 'مجموعة',
+                        'url' => $url,
+                        'date' => $grp->created_at ? $grp->created_at->diffForHumans() : '',
+                        'is_indexed' => $lastLog && $lastLog->status === 'success',
+                        'last_status' => $lastLog ? $lastLog->status : 'none',
+                    ];
+                }
+            } catch (\Throwable $e) {
+                // Ignore
+            }
+        }
+
         return $items;
     }
 
@@ -350,6 +379,7 @@ class InstantIndexerService
             'auto_news' => (bool) ($options['indexer_auto_news'] ?? true),
             'auto_directory' => (bool) ($options['indexer_auto_directory'] ?? true),
             'auto_page' => (bool) ($options['indexer_auto_page'] ?? true),
+            'auto_group' => (bool) ($options['indexer_auto_group'] ?? true),
             'auto_delete' => (bool) ($options['indexer_auto_delete'] ?? true),
         ];
     }
@@ -371,6 +401,7 @@ class InstantIndexerService
             'indexer_auto_news' => isset($data['auto_news']) && $data['auto_news'] ? '1' : '0',
             'indexer_auto_directory' => isset($data['auto_directory']) && $data['auto_directory'] ? '1' : '0',
             'indexer_auto_page' => isset($data['auto_page']) && $data['auto_page'] ? '1' : '0',
+            'indexer_auto_group' => isset($data['auto_group']) && $data['auto_group'] ? '1' : '0',
             'indexer_auto_delete' => isset($data['auto_delete']) && $data['auto_delete'] ? '1' : '0',
         ];
 

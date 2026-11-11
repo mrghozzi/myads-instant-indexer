@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [1.2.0] - 2026-11-11
+
+### Added / Enhanced
+- **Next-Gen Community Groups Real-Time Indexing Support:**
+  - Added Eloquent observers for `Group::saved` and `Group::deleted`.
+  - Automatically submits public active group URLs (`/groups/{slug}`) to Google Indexing API and IndexNow protocol (`URL_UPDATED`).
+  - Automatically notifies search engines (`URL_DELETED`) when a public group is removed or deactivated.
+  - Added `auto_group` trigger setting in admin console with full bilingual support (English / Arabic).
+  - Included public active groups in Candidate Content table for one-click manual re-indexing.
+
 ## [1.1.0] - 2026-11-05
 
 ### Added / Enhanced

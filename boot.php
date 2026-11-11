@@ -210,6 +210,41 @@ if (!app()->runningInConsole() || app()->environment('testing')) {
             // Suppress
         }
     });
+
+    // G. Public Community Groups
+    if (class_exists(\App\Models\Group::class)) {
+        \App\Models\Group::saved(function ($group) {
+            try {
+                $config = instant_indexer_service()->getConfig();
+                if (empty($config['auto_group'])) {
+                    return;
+                }
+
+                if ($group->status === \App\Models\Group::STATUS_ACTIVE && $group->privacy === \App\Models\Group::PRIVACY_PUBLIC && !empty($group->slug)) {
+                    $url = route('groups.show', $group->slug);
+                    instant_indexer_service()->submitUrl($url, 'URL_UPDATED', 'group', $group->id);
+                }
+            } catch (\Throwable $e) {
+                // Suppress
+            }
+        });
+
+        \App\Models\Group::deleted(function ($group) {
+            try {
+                $config = instant_indexer_service()->getConfig();
+                if (!$config['auto_delete']) {
+                    return;
+                }
+
+                if (!empty($group->slug)) {
+                    $url = route('groups.show', $group->slug);
+                    instant_indexer_service()->submitUrl($url, 'URL_DELETED', 'group', $group->id);
+                }
+            } catch (\Throwable $e) {
+                // Suppress
+            }
+        });
+    }
 }
 
 // ─── 6. Dynamic IndexNow Verification Key Route ───────────────────────────────

@@ -68,6 +68,7 @@ return [
     'trigger_news' => 'Auto-index new News and Articles',
     'trigger_directory' => 'Auto-index new Directory listings',
     'trigger_page' => 'Auto-index Custom/Static Pages on save',
+    'trigger_group' => 'Auto-index public Community Groups on creation',
     'trigger_delete' => 'Send URL_DELETED notification when content is deleted',
     'btn_save_settings' => 'Save Configuration & Triggers',
 
